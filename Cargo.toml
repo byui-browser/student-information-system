@@ -1,0 +1,50 @@
+[workspace]
+resolver = "3"
+members = [
+    "backend/platform/core",
+    "backend/platform/api",
+    "backend/domains/identity",
+    "backend/domains/catalog",
+    "backend/domains/enrollment",
+    "backend/domains/records",
+    "backend/domains/finance",
+    "backend/domains/advising",
+    "backend/domains/admissions",
+]
+# The desktop shell has its own Cargo workspace so backend builds stay fast.
+exclude = ["clients/desktop/src-tauri"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "Apache-2.0"
+publish = false
+
+[workspace.dependencies]
+# Internal crates
+sis-core = { path = "backend/platform/core" }
+sis-identity = { path = "backend/domains/identity" }
+sis-catalog = { path = "backend/domains/catalog" }
+sis-enrollment = { path = "backend/domains/enrollment" }
+sis-records = { path = "backend/domains/records" }
+sis-finance = { path = "backend/domains/finance" }
+sis-advising = { path = "backend/domains/advising" }
+sis-admissions = { path = "backend/domains/admissions" }
+
+# Third party
+axum = "0.8"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "net", "signal"] }
+tower = { version = "0.5", features = ["util"] }
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+http-body-util = "0.1"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }

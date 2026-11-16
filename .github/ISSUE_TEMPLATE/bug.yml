@@ -1,0 +1,31 @@
+name: Bug
+description: Something is broken
+labels: ["type: bug"]
+body:
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      options: [platform, identity, catalog, enrollment, records, finance, advising, admissions, unsure]
+    validations:
+      required: true
+  - type: dropdown
+    id: client
+    attributes:
+      label: Where did you see it?
+      options: [API, web, desktop, mobile, MCP]
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Start the API with `cargo run -p sis-api`
+        2. GET /api/v1/...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs. actual
+    validations:
+      required: true

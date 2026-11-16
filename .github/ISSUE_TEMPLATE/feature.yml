@@ -1,0 +1,34 @@
+name: Feature
+description: A small, shippable piece of new behavior
+labels: ["type: feature"]
+body:
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      options: [platform, identity, catalog, enrollment, records, finance, advising, admissions]
+    validations:
+      required: true
+  - type: textarea
+    id: story
+    attributes:
+      label: What should happen?
+      description: Who needs this, and what can they do once it ships?
+      placeholder: As a registrar, I can list every section for a term so I can check room capacity.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - [ ] GET /api/v1/catalog/sections?term=2027SP returns only that term
+        - [ ] Unknown term returns an empty list
+        - [ ] Tests cover both cases
+    validations:
+      required: true
+  - type: dropdown
+    id: size
+    attributes:
+      label: Size
+      options: ["S (under a day)", "M (1-2 days)", "L (split this up)"]

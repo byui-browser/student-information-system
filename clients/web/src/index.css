@@ -1,0 +1,23 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #1f2933;
+  background: #f7f8fa;
+}
+
+main {
+  max-width: 48rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.status {
+  color: #52606d;
+}
+
+.bad {
+  color: #b42318;
+}
+
+li {
+  padding: 0.25rem 0;
+}
