@@ -1,0 +1,27 @@
+{
+  "name": "student-information-system",
+  "private": true,
+  "workspaces": [
+    "clients/shared/*",
+    "clients/web",
+    "clients/desktop",
+    "clients/mobile",
+    "clients/mcp"
+  ],
+  "scripts": {
+    "dev:api": "cargo run -p sis-api",
+    "dev:web": "npm run dev -w @sis/web",
+    "dev:desktop": "npm run dev -w @sis/desktop",
+    "dev:mobile": "npm run dev -w @sis/mobile",
+    "dev:mcp": "npm run dev -w @sis/mcp",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}

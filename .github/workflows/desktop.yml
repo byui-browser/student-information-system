@@ -1,0 +1,36 @@
+name: Desktop shell
+
+# The desktop shell pulls in a large native toolkit, so it only builds
+# when its own files change.
+on:
+  pull_request:
+    paths: ["clients/desktop/src-tauri/**", ".github/workflows/desktop.yml"]
+  push:
+    branches: [main]
+    paths: ["clients/desktop/src-tauri/**", ".github/workflows/desktop.yml"]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  tauri:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: clients/desktop/src-tauri
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install system libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: clients/desktop/src-tauri
+      - run: mkdir -p ../dist
+      - run: cargo fmt --check
+      - run: cargo clippy --all-targets -- -D warnings
+      - run: cargo test

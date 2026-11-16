@@ -1,0 +1,50 @@
+# Code owners: a review from an owning team is required to merge.
+# Replace `your-org` with the GitHub organization name.
+#
+# Order matters: the LAST matching pattern wins, so broad rules come first.
+# Team slugs read <section><number>-<domain>, e.g. a3-cat and b3-cat are the
+# two teams that share the catalog domain.
+#
+# Each domain's src/contract.rs is shared by both of its teams. CODEOWNERS
+# accepts approval from ANY listed owner, so "both teams approve" for
+# contract changes is a review rule (see CONTRIBUTING.md), not enforced here.
+
+# Default: platform teams own everything not claimed below, including the
+# workspace manifests, CI, the API server, shared core, the shared API
+# client, and the client app shells.
+*                                            @your-org/a1-plt @your-org/b1-plt
+
+# identity
+/backend/domains/identity/                   @your-org/a2-idn @your-org/b2-idn
+/clients/*/src/features/identity/            @your-org/a2-idn @your-org/b2-idn
+/clients/mcp/src/tools/identity.ts           @your-org/a2-idn @your-org/b2-idn
+
+# catalog
+/backend/domains/catalog/                    @your-org/a3-cat @your-org/b3-cat
+/clients/*/src/features/catalog/             @your-org/a3-cat @your-org/b3-cat
+/clients/mcp/src/tools/catalog.ts            @your-org/a3-cat @your-org/b3-cat
+
+# enrollment
+/backend/domains/enrollment/                 @your-org/a4-enr @your-org/b4-enr
+/clients/*/src/features/enrollment/          @your-org/a4-enr @your-org/b4-enr
+/clients/mcp/src/tools/enrollment.ts         @your-org/a4-enr @your-org/b4-enr
+
+# records
+/backend/domains/records/                    @your-org/a5-rec @your-org/b5-rec
+/clients/*/src/features/records/             @your-org/a5-rec @your-org/b5-rec
+/clients/mcp/src/tools/records.ts            @your-org/a5-rec @your-org/b5-rec
+
+# finance
+/backend/domains/finance/                    @your-org/a6-fin @your-org/b6-fin
+/clients/*/src/features/finance/             @your-org/a6-fin @your-org/b6-fin
+/clients/mcp/src/tools/finance.ts            @your-org/a6-fin @your-org/b6-fin
+
+# advising
+/backend/domains/advising/                   @your-org/a7-adv @your-org/b7-adv
+/clients/*/src/features/advising/            @your-org/a7-adv @your-org/b7-adv
+/clients/mcp/src/tools/advising.ts           @your-org/a7-adv @your-org/b7-adv
+
+# admissions
+/backend/domains/admissions/                 @your-org/a8-adm @your-org/b8-adm
+/clients/*/src/features/admissions/          @your-org/a8-adm @your-org/b8-adm
+/clients/mcp/src/tools/admissions.ts         @your-org/a8-adm @your-org/b8-adm
